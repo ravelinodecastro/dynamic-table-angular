@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { TableHeader } from './dynamic-table/table-header.type';
+import { users } from './users.data';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,24 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dynamic-table';
+
+  data : User[] = users;
+  tableHeaders: TableHeader[] = [
+    {
+      key: 'id',
+      label: 'ID'
+    },
+    {
+      key: 'name',
+      label: 'Full Name'
+    },
+    {
+      key: 'email',
+      label: 'Email Address'
+    },
+    {
+      key: 'status',
+      label: 'Is Active'
+    }
+  ]
 }

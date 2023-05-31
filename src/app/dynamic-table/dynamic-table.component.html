@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <tr>
+            <th *ngFor="let tableHeader of tableHeaders">{{tableHeader.label}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list">
+            <td *ngFor="let tableHeader of tableHeaders">
+                <ng-container *ngIf="getCellTemplate(tableHeader.key); let template; else default">
+                    <ng-container *ngTemplateOutlet="template; context: { row: item, header: tableHeader }">
+                    </ng-container>
+                </ng-container>
+                <ng-template #default> {{ item[tableHeader.key] }}</ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>
